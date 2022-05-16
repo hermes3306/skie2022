@@ -7,19 +7,19 @@ try:
     connection = psycopg2.connect(
         user = "skie",
         password = "skie",
-        host = "localhost",
+        host = "192.168.1.102",
         port = "5432",
         database = "postgres"
     )
 
     #Create a cursor connection object to a PostgreSQL instance and print the connection properties.
     cursor = connection.cursor()
-    pg_create = """ create table book(id serial, author text, isbn text, title text, date_published text) """
+    pg_create = """ create table book2(id serial, author text, isbn text, title text, date_published text) """
     cursor.execute(pg_create)
 	
 	
     #Get the column name of a table inside the database and put some values
-    pg_insert = """ INSERT INTO book (id, author, isbn, title, date_published)
+    pg_insert = """ INSERT INTO book2 (id, author, isbn, title, date_published)
                 VALUES (%s,%s,%s,%s,%s)"""
    
     inserted_values = (1, 'Layla Nowiztki', '789-1-46-268414-1', 'How to become a professional programmer', 'January 25 2011')
