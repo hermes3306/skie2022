@@ -1,4 +1,6 @@
 from mongoengine import Document, ListField, StringField, URLField
+from mongoengine import connect
+connect(db="rptutorials", host="localhost", port=27017)
 
 class Tutorial(Document):
     title = StringField(required=True, max_length=70)
