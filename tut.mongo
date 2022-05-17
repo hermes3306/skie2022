@@ -1,0 +1,29 @@
+tutorial1 = {
+     "title": "How to Iterate Through a Dictionary in Python",
+     "author": "Leodanis",
+     "contributors": [
+         "Aldren",
+         "Jim",
+         "Joanna"
+     ],
+     "url": "https://realpython.com/iterate-through-dictionary-python/"
+ }
+
+tutorial2 = {
+      "title": "Python 3's f-Strings: An Improved String Formatting Syntax",
+      "author": "Joanna",
+      "contributors": [
+          "Adriana",
+          "David",
+          "Dan",
+          "Jim",
+          "Pavel"
+      ],
+      "url": "https://realpython.com/python-f-strings/"
+ }
+
+db.tutorial.insertMany([tutorial1, tutorial2])
+db.tutorial.find()
+db.tutorial.find({author: "Joanna"})
+
+
