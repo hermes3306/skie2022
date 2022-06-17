@@ -1,0 +1,91 @@
+global
+	log /dev/log	local0
+	log /dev/log	local1 notice
+	chroot /var/lib/haproxy
+	stats socket /run/haproxy/admin.sock mode 660 level admin
+	stats timeout 30s
+	user haproxy
+	group haproxy
+	daemon
+
+	# Default SSL material locations
+	ca-base /etc/ssl/certs
+	crt-base /etc/ssl/private
+
+	# Default ciphers to use on SSL-enabled listening sockets.
+	# For more information, see ciphers(1SSL). This list is from:
+	#  https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
+	# An alternative list with additional directives can be obtained from
+	#  https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=haproxy
+	ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS
+	ssl-default-bind-options no-sslv3
+
+defaults
+	log	global
+	mode	http
+	option	httplog
+	option	dontlognull
+        timeout connect 5000
+        timeout client  50000
+        timeout server  50000
+	errorfile 400 /etc/haproxy/errors/400.http
+	errorfile 403 /etc/haproxy/errors/403.http
+	errorfile 408 /etc/haproxy/errors/408.http
+	errorfile 500 /etc/haproxy/errors/500.http
+	errorfile 502 /etc/haproxy/errors/502.http
+	errorfile 503 /etc/haproxy/errors/503.http
+	errorfile 504 /etc/haproxy/errors/504.http
+
+frontend http
+	bind *:80
+        acl is_home.koov.net		hdr(host) -i home.koov.net
+        acl is_dev.koov.net		hdr(host) -i dev.koov.net
+        acl is_mail.koov.net		hdr(host) -i mail.koov.net
+        acl is_talk.koov.net		hdr(host) -i talk.koov.net
+        acl is_nas.linuxdata.kr         hdr(host) -i nas.linuxdata.kr
+
+	# 호스트명이 allthatlinux.com, 이나 linuxdata.kr 으로 끝나는 모든 요청
+	acl is_allthatlinux.com		hdr_end(host) -i allthatlinux.com
+	acl is_linuxdata.kr		hdr_end(host) -i linuxdata.kr
+
+	# nas 요청중 / 요청을 리다이렉션
+        #acl is_redirect_nas             path -i /
+        #redirect code 301 location /webman/index.cgi if is_redirect_nas is_nas.linuxdata.kr
+        #redirect code 301 location http://nas.linuxdata.kr/webman/index.cgi if is_redirect_nas
+        #redirect prefix /webman/index.cgi code 301 if is_nas.linuxdata.kr is_redirect_nas
+
+        ## figure out which one to use
+        use_backend backend_home.koov.net	if is_home.koov.net
+        use_backend backend_dev.koov.net	if is_dev.koov.net
+        use_backend backend_mail.koov.net	if is_mail.koov.net
+        use_backend backend_talk.koov.net	if is_talk.koov.net
+        use_backend backend_allthatlinux.com    if is_allthatlinux.com or is_linuxdata.kr
+
+        default_backend backend_home.koov.net
+
+backend backend_home.koov.net
+        server  static  192.168.0.24:80        check
+
+backend backend_dev.koov.net
+        server  static  192.168.0.27:80        check
+
+backend backend_allthatlinux.com
+        server  static  192.168.0.21:80        check
+
+backend backend_talk.koov.net
+        server  static  192.168.0.28:80        check
+
+backend backend_mail.koov.net
+        server  static  192.168.0.19:80        check
+
+### Mysql Connection Forward
+listen  mysql-db1
+        bind *:3306
+        mode tcp
+        #timeout client  10800s
+        #timeout server  10800s
+        balance leastconn
+        #option httpchk
+        #option allbackups
+        #default-server port 9200 inter 2s downinter 5s rise 3 fall 2 slowstart 60s maxconn 64 maxqueue 128 weight 100
+        server mysql1 192.168.0.30:3306 check  # Destination DB Server
