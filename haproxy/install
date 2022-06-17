@@ -1,0 +1,14 @@
+yum install httpd
+systemctl start httpd
+systemctl enable httpd
+
+firewall-cmd –permanent –add-service=http
+firewall-cmd –permanent –add-service=https
+firewall-cmd –reload
+
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
+yum repolist
+yum install php70w php70w-mysql
+systemctl restart httpd
