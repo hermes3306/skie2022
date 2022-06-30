@@ -1,0 +1,79 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+config.vm.box = "hashicorp/precise64"
+
+$script = <<-SCRIPT
+sudo sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-Linux-*
+sudo sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-Linux-*
+sudo yum -y update
+
+echo "###### Installing httpd "
+sudo yum -y update
+sudo yum -y install httpd
+sudo systemctl enable httpd
+sudo systemctl start httpd
+sudo systemctl status httpd
+echo "###### Installing httpd done! "
+
+echo "###### Installing postgresql "
+sudo dnf install -y @postgresql:10
+sudo postgresql-setup initdb
+sudo systemctl enable postgresql
+sudo systemctl restart postgresql
+sudo systemctl status postgresql
+echo "###### Installing postgresql done! "
+
+echo "###### Installing git"
+sudo yum install -y git
+echo "###### Installing git done! "
+
+echo "###### Installing haproxy"
+sudo yum install -y haproxy
+echo "###### Installing haproxy done! "
+
+SCRIPT
+
+config.vm.define "vm0" do |vm0|
+vm0.vm.box = "centos/8"
+vm0.vm.hostname = 'vm0'
+vm0.vm.network "private_network", ip: "192.168.137.100"
+end
+
+config.vm.define "vm1" do |vm1|
+vm1.vm.box = "centos/8"
+vm1.vm.hostname = 'vm1'
+vm1.vm.network "private_network", ip: "192.168.137.101"
+vm1.vm.provision "shell", inline: $script
+end
+
+config.vm.define "vm2" do |vm2|
+vm2.vm.box = "centos/8"
+vm2.vm.hostname = 'vm2'
+vm2.vm.network "private_network", ip: "192.168.137.102"
+vm2.vm.provision "shell", inline: $script
+end
+
+config.vm.define "vm3" do |vm3|
+vm3.vm.box = "centos/8"
+vm3.vm.hostname = 'vm3'
+vm3.vm.network "private_network", ip: "192.168.137.103"
+vm3.vm.provision "shell", inline: $script
+end
+
+config.vm.define "vm4" do |vm4|
+vm4.vm.box = "centos/8"
+vm4.vm.hostname = 'vm4'
+vm4.vm.network "private_network", ip: "192.168.137.104"
+vm4.vm.provision "shell", inline: $script
+end
+
+
+
+
+end
