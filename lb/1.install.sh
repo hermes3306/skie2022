@@ -1,7 +1,7 @@
 sudo yum install -y telnet
 sudo yum install -y httpd
 sudo yum install -y haproxy
-sudo yum -y install xinetd.x86_64
+sudo yum -y install xinetd
 
 sudo systemctl enable httpd
 sudo systemctl enable haproxy
