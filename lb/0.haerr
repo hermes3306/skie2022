@@ -1,0 +1,1 @@
+sudo journalctl -u haproxy.service --since today --no-pager
