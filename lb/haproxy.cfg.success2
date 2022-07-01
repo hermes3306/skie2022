@@ -131,6 +131,6 @@ default_backend be_pgsql_r0
 
 backend be_pgsql_r0
     option httpchk
-    http-check expect status 200
+    http-check expect status 206
     default-server inter 3s fall 3 rise 2 on-marked-down shutdown-sessions
     server pg1 pg1:5432 maxconn 100 check port 23267
