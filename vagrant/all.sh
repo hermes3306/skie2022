@@ -1,4 +1,6 @@
 vi ~/.bashrc
+source ~/.bashrc
+0.git.sh
 1.ins_postgres.sh
 2.psql.sh
 3.crtuser.sh
