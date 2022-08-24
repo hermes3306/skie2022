@@ -1,0 +1,138 @@
+no,way_type,way_name
+1,culture,강서문화 산책길
+2,culture,개운산숲나들길
+3,culture,개웅산숲 산책길
+4,culture,개화산나들길
+5,culture,고덕산산책길
+6,culture,관악산계곡나들길
+7,culture,관악산나들길
+8,culture,관음사 산책길
+9,culture,구로지양산숲 나들길
+10,culture,구룡산 나들길
+11,culture,낙성대 산책길
+12,culture,남산순환나들길
+13,culture,남산야외식물원산책길
+14,culture,달마을공원산책길
+15,culture,대모산 나들길
+16,culture,덕수궁산책길
+17,culture,도심고궁 나들길
+18,culture,독립공원안산 나들길
+19,culture,독산삼성산나들길
+20,culture,동작충효길1코스-고구동산길
+21,culture,동작충효길2코스-현충원길
+22,culture,동작충효길3코스-한강나들길
+23,culture,동작충효길4코스-노량진길
+24,culture,동작충효길5코스-보라매길
+25,culture,동작충효길6코스-동작마루길
+26,culture,동작충효길7코스-까치산길
+27,culture,망우산숲나들길
+28,culture,몽촌토성 나들길
+29,culture,배봉산답십리나들길
+30,culture,백련산 나들길
+31,culture,백사실두메 나들길
+32,culture,백제고분군 산책길
+33,culture,백제석총 산책길
+34,culture,보라매공원 산책길
+35,culture,봉제산숲 나들길
+36,culture,부암동 나들길
+37,culture,북서울 꿈의숲 나들길
+38,culture,북서울 꿈의숲 산책길
+39,culture,북악스카이웨이길
+40,culture,북악하늘 나들길
+41,culture,북한산방학나들길
+42,culture,북한산자락 산책길
+43,culture,불암산나들길
+44,culture,상암산DMC체험 나들길
+45,culture,서리골서리풀나들길
+46,culture,서서울호수공원 산책길
+47,culture,서오릉 나들길
+48,culture,서울숲공원산책길
+49,culture,서울숲남산나들길
+50,culture,석촌호수산책길
+51,culture,선정릉나들길
+52,culture,성북동고택북촌 산책길
+53,culture,송파소리길
+54,culture,수락산나들길
+55,culture,신촌대학탐방 나들길
+56,culture,쌍문역사산책길
+57,culture,아차산숲나들길
+58,culture,안산숲 나들길
+59,culture,어린이대공원산책길
+60,culture,여의도공원 산책길
+61,culture,영등포동작구한강길
+62,culture,영등포봄꽃나들길
+63,culture,오동공원산책길
+64,culture,오패산나들길
+65,culture,용마산나들길
+66,culture,용산가족산책길
+67,culture,용왕산 나들길
+68,culture,우면산숲 나들길
+69,culture,우이령 나들길
+70,culture,우장산공원 산책길
+71,culture,월계공원산책길
+72,culture,월드컵공원 나들길
+73,culture,인사동삼청동 나들길
+74,culture,인왕산 나들길
+75,culture,일자산숲 나들길
+76,culture,전쟁기념관산책길
+77,culture,정릉숲 산책길
+78,culture,중랑천제방장미벚꽃길
+79,culture,중랑캠핑숲나들길
+80,culture,진관공원 나들길
+81,culture,청량산 산책길
+82,culture,청룡산나들길
+83,culture,초안산 나들길
+84,culture,탕춘대성숲 나들길
+85,culture,한남매봉공원산책길
+86,culture,현충원 나들길
+87,culture,호암산 나들길
+88,culture,홍대예술의거리 나들길
+89,culture,홍릉수목원산책길
+90,hanyang-city,한양도성길 낙산구간
+91,hanyang-city,한양도성길 남산구간
+92,hanyang-city,한양도성길 숭례문구간
+93,hanyang-city,한양도성길 흥인지문구간
+94,hanyang-city,한양도성길 백악구간
+95,hanyang-city,한양도성길 인왕구간
+96,seoul-dulle,서울둘레길 6코스(안양천)
+97,seoul-dulle,서울둘레길 7코스(봉산-앵봉산)
+98,seoul-dulle,서울둘레길 3코스(고덕-일자산)
+99,seoul-dulle,서울둘레길 4코스(대모-우면산)
+100,seoul-dulle,서울둘레길 5코스(관악산)
+101,seoul-dulle,서울둘레길 1코스(수락-불암산)
+102,seoul-dulle,서울둘레길 2코스(용마-아차산)
+103,seoul-dulle,서울둘레길 1코스(수락-불암산) 보조구간
+104,seoul-dulle,서울둘레길 8코스(북한산)
+105,jicheon,가오천길
+106,jicheon,강남서초한강길
+107,jicheon,강서한강길
+108,jicheon,고덕천길
+109,jicheon,굴포천
+110,jicheon,당현천길
+111,jicheon,대동천길
+112,jicheon,도림천길
+113,jicheon,도봉천길
+114,jicheon,독정천
+115,jicheon,마포한강길
+116,jicheon,망월천길
+117,jicheon,목감천
+118,jicheon,묵동천길
+119,jicheon,반포천
+120,jicheon,방학천길
+121,jicheon,불광천길
+122,jicheon,성내천길
+123,jicheon,성동광진구한강길
+124,jicheon,성북천길
+125,jicheon,세곡천
+126,jicheon,송파강동한강길
+127,jicheon,안양천길
+128,jicheon,양재천
+129,jicheon,여의천
+130,jicheon,영등포동작구한강길
+131,jicheon,용산한강길
+132,jicheon,우이천길
+133,jicheon,정릉천길
+134,jicheon,중랑천길
+135,jicheon,청계천길
+136,jicheon,탄천길
+137,jicheon,홍제천길
