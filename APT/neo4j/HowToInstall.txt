@@ -1,0 +1,38 @@
+First, import our signing key:
+
+rpm --import https://debian.neo4j.com/neotechnology.gpg.key
+Then, you will need to add our yum repo to /etc/yum.repos.d/neo4j.repo:
+
+cat <<EOF>  /etc/yum.repos.d/neo4j.repo
+[neo4j]
+name=Neo4j Yum Repo
+baseurl=http://yum.neo4j.com/stable
+enabled=1
+gpgcheck=1
+EOF
+Installing Neo4j
+To install the latest Neo4j Community Edition:
+
+sudo yum install neo4j
+    
+To install the latest Neo4j Enterprise Edition:
+
+sudo yum install neo4j-enterprise
+    
+If you have any questions, please ask on Stack Overflow
+
+Installing other versions
+By default you will install the latest Neo4j version. The repository also contains older versions. You can list the available versions with this command:
+
+yum search --showduplicates neo4j
+    
+To install a specific version:
+The full version number must be specified, including major, minor and patch version.
+
+For example, to install Neo4j Community 3.5.5:
+
+sudo yum install neo4j-3.5.5
+    
+For example, to install Neo4j Enterprise 4.0.0:
+
+sudo yum install neo4j-enterprise-4.0.0
