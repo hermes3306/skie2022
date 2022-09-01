@@ -219,7 +219,6 @@ SET r.distance = toFloat(nodeRecord.dist);
 CREATE CONSTRAINT IF NOT EXISTS ON (bus: `BusStation`) ASSERT bus.`station_id` IS UNIQUE;
 
 // bus_station_all.csv 로드
-:auto USING PERIODIC COMMIT 500
 LOAD CSV WITH HEADERS FROM 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTIklzvtThBMu876zP-d1oxMFl1h5Na5KJd7LnzWpXvIzgYFKxq8gaeub77dwnB8t5fVHzF3cHtv5Ir/pub?gid=1981090009&single=true&output=csv' AS nodeRecord
 
 //  BusStation 노드 생성
@@ -240,7 +239,6 @@ SET r.distance = toFloat(nodeRecord.dist);
 CREATE CONSTRAINT IF NOT EXISTS ON (bus: `BusRoute`) ASSERT bus.`route_id` IS UNIQUE;
 
 // bus_route_all.csv 로드
-:auto USING PERIODIC COMMIT 500
 LOAD CSV WITH HEADERS FROM 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSQ2QZ_hwv4qwSLoL_kjI6m7sSFMaEjbm-wl21IOp5eUShY7Fi4AABjk9OjZSUdFRgPzQueiZ5bmxnD/pub?gid=451189410&single=true&output=csv' AS nodeRecord
 
 //  BusRoute 노드 생성
@@ -249,7 +247,6 @@ SET n.`route_name` = nodeRecord.`route_name`
 SET n.`route_type` = nodeRecord.`route_type`;
 
 // bus_route_station_all.csv 로드
-:auto USING PERIODIC COMMIT 500
 LOAD CSV WITH HEADERS FROM 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQrQ7Rqw2RNe221cH78mnEowIyVZdUkUyB07Y5RU2DKX4eczRGtk65xH1U1rn1WdkxH2kpkKjHEtrsZ/pub?gid=1609769136&single=true&output=csv' AS nodeRecord
 
 // (:BusRoute)-[:STOP_AT]->(:BusStation) 관계 생성
